@@ -42,17 +42,12 @@
 </template>
 
 <script >
+import { logoutMixin } from "../mixins";
 export default {
   data() {
     return {};
   },
-  methods: {
-    efetarLogout() {
-      // localStorage.removeItem("token");
-      this.$store.commit("DESLOGAR_USUARIO");
-      this.$router.push({ name: "usuario.entrar" });
-    },
-  },
+  mixins: [logoutMixin],
   computed: {
     usuarioLogado() {
       // return Boolean(localStorage.getItem("token"));

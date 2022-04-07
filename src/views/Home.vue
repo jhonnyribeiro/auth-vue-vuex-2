@@ -9,14 +9,9 @@
 </template>
 
 <script>
+import { logoutMixin } from "../mixins";
 export default {
   name: "home",
-  methods: {
-    efetarLogout() {
-      // localStorage.removeItem("token");
-      this.$store.commit("DESLOGAR_USUARIO");
-      this.$router.push({ name: "usuario.entrar" });
-    },
-  },
+  mixins: [logoutMixin],
 };
 </script>
