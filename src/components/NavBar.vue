@@ -43,16 +43,14 @@
 
 <script >
 import { logoutMixin } from "../mixins";
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {};
   },
   mixins: [logoutMixin],
   computed: {
-    usuarioLogado() {
-      // return Boolean(localStorage.getItem("token"));
-      return Boolean(this.$store.state.token);
-    },
+    ...mapGetters(["usuarioLogado"]),
   },
 };
 </script>
