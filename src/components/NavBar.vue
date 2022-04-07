@@ -48,13 +48,15 @@ export default {
   },
   methods: {
     efetarLogout() {
-      localStorage.removeItem("token");
+      // localStorage.removeItem("token");
+      this.$store.commit("DESLOGAR_USUARIO");
       this.$router.push({ name: "usuario.entrar" });
     },
   },
   computed: {
     usuarioLogado() {
-      return Boolean(localStorage.getItem("token"));
+      // return Boolean(localStorage.getItem("token"));
+      return Boolean(this.$store.state.token);
     },
   },
 };
