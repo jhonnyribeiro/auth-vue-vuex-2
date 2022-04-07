@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <h1>login</h1>
-    <form>
+    <h1>Login</h1>
+    <form @submit.stop.prevent="login()">
       <div class="form-group">
         <label for="email">E-mail</label>
         <input
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -40,6 +41,20 @@ export default {
         password: "",
       },
     };
+  },
+  methods: {
+    login() {
+      axios
+        .post("http://localhost:8000/auth/login", this.usuario)
+        .then((response) => {
+          console.log(response);
+          localStorage.setItem("token", response.data.access_token);
+          this.$router.push({ name: "gerentes" });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>
