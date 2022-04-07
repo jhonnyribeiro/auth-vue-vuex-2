@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -51,7 +52,15 @@ export default {
 
   methods: {
     enviarFormulario() {
-      console.log(this.usuario);
+      alert(this.usuario.nome);
+      axios
+        .post("http://localhost:8000/auth/register", this.usuario)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };
