@@ -22,6 +22,8 @@
         />
       </div>
 
+      <p class="alert alert-danger" v-if="mensagemErro">{{ mensagemErro }}</p>
+
       <button type="submit" class="btn btn-primary">Entrar</button>
       <hr />
       <router-link :to="{ name: 'usuario.novo' }" class="mt-5"
@@ -39,13 +41,24 @@ export default {
         email: "",
         password: "",
       },
+      mensagemErro: "",
     };
   },
   methods: {
     login() {
-      this.$store.dispatch("efetuarLogin", this.usuario).then(() => {
-        this.$router.push({ name: "gerentes" });
-      });
+      this.$store
+        .dispatch("efetuarLogin", this.usuario)
+        .then(() => {
+          this.$router.push({ name: "gerentes" });
+          this.mensagemErro = "";
+        })
+        .catch((erro) => {
+          if (erro.request.status === 401) {
+            this.mensagemErro = "Usuário ou senha inválidos";
+          } else {
+            this.mensagemErro = "Erro ao efetuar login";
+          }
+        });
     },
   },
 };
