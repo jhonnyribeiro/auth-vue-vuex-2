@@ -52,7 +52,6 @@ export default {
 
   methods: {
     enviarFormulario() {
-      alert(this.usuario.nome);
       axios
         .post("http://localhost:8000/auth/register", this.usuario)
         .then((response) => {

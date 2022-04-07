@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Gerentes from "../views/Gerentes.vue";
 import Home from "../views/Home.vue";
-import NovoUsuario from "../components/NovoUsuario";
+import NovoUsuario from "../views/NovoUsuario.vue";
 
 Vue.use(VueRouter);
 
