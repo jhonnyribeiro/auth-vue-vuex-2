@@ -34,6 +34,11 @@
 
       <button type="submit" class="btn btn-success mt-2">Salvar</button>
     </form>
+
+    <hr />
+    <router-link :to="{ name: 'usuario.entrar' }" class="mt-5"
+      >Entrar</router-link
+    >
   </div>
 </template>
 
